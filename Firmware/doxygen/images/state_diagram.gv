@@ -1,0 +1,18 @@
+digraph G {
+   // node with current defaults
+  {
+	node [shape=ellipse color=black fillcolor=white]
+	S1 S2 S3 S4
+  }
+  S1 [label="Reset"]
+  S2 [label="Wait"]
+  S3 [label="Silent Wait"]
+  S4 [label="Active"]
+
+  S1->S2
+  S2->S3 [label=" No PC\nTimeout"]
+  S2->S4 [label=" Connection is\nestablished"]
+  S3->S4 [label=" Connection is\nestablished"]
+  S4->S1 [label=" No CMD\nTimeout"]
+  S4->S1 [label=" Reset\nMessage"]
+}

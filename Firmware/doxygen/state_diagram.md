@@ -1,0 +1,14 @@
+# State Diagram # {#states}
+
+State diagram is shown in the following figure.
+
+@dotfile state_diagram.gv
+
+Explanations of the states are given as below.
+
+State  | Explanation
+------------- | -------------
+Reset  | This is the state after power up. Also setting the program counter (PC) to zero will reset the CPU. @see resetFunc()
+Wait  | aPCmeter enters this state after Reset immediately. In this state, "aPCmeter\r\n" message is sent over serial channel. After the message is sent, aPCmeter waits a response from PC. If no response is received within 2 seconds, 4 pseudo random numbers are generated for PWM values of red LED of CPU gauge, green LED of CPU gauge, red LED of RAM gauge and green LED of RAM gauge. Similarly, 2 pseudo random binary numbers are generated for blue LED of CPU gauge and blue LED of RAM gauge. Using this generated numbers, gauges are illuminated in a pseudo random manner. Gauges stay unpowered completely. Then, the message is sent again. This loop continues for 60 seconds at most. If a valid message is received from the PC, connection is considered to be established. If no valid message is received within 60 seconds, _no PC timeout_ is occured and the state is changed from Wait to Silent Wait. @see #_NO_PC_TIMEOUT @see #_UART_TIMEOUT_ms @see wait_for_connection().
+Silent Wait | This state is very similar to Wait state. The differences are as in follows. In Silent Wait state, green and blue LEDs of both gauges become off. Brightness of both red LEDs are changed at every 2 seconds pseudo randomly. As in Wait state, "aPCmeter\r\n" message is sent over serial channel and a valid response is expected. However, Silent Wait state continues until a valid response is received. Notice that Wait and Silent Wait states are almost the same. Purpose of the Wait state is to indicate that aPCmeter is running and is waiting a connection response from PC. Also all LEDs are illimunated in pseudo random manner to test all of them. If aPCmeter is powerd up but no PC software gives a response, changing colors of gauges continuously may disturb people around aPCmeter. Therefore aPCmeter enters in Silen Wait mode after 60 seconds. If you look at directly, you may see that it still tries to connect to PC. @see wait_for_connection()
+Active | This is the state where aPCmeter does its job. After connection is established, aPCmeter works in active state until power is removed. The serial communciation protocol between Arduino and PC is given in the following chapters. In this state, maximum duration between two consecutive successful command should be less than 2 seconds. If aPCmeter doesn't receive a successful command within 60 seconds, it resets itself. @see loop() @see #_NO_CMD_TIMEOUT @see #_UART_TIMEOUT_ms

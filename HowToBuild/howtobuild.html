@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="TOC">
+<ul>
+<li><a href="#how-to-build-your-own-apcmeter">How to build your own aPCmeter</a><ul>
+<li><a href="#analog-gauges">Analog gauges</a></li>
+<li><a href="#arudino-based-circuit">Arudino based circuit</a></li>
+<li><a href="#wood-case">Wood case</a></li>
+<li><a href="#software">Software</a></li>
+</ul></li>
+<li><a href="#further-questions-and-comments">Further Questions and Comments</a></li>
+</ul>
+</div>
+<h1 id="how-to-build-your-own-apcmeter">How to build your own aPCmeter</h1>
+<p>First of all, <strong>please download project files from the link given in the main project page:</strong> <a href="http://www.alperyazar.com/r/aPCmeter" class="uri">http://www.alperyazar.com/r/aPCmeter</a>. You should look into relevant folders when you need.</p>
+<h2 id="analog-gauges">Analog gauges</h2>
+<p>Firstly, you should find two propoer analog gauges for this project. This may be the hardest part to find. Appereance of gauges isn't important. Since the Arduino board will apply a voltage between 0 - 5V, gauges should handle this range. I used 5V analog voltmeters but if you couldn't find a 5V voltmeter you may still use what you find. Because most of high range meters have internal voltage dividers. You can modify the range if you play those internal resistor.</p>
+<p>I bought couple of gauges from Aliexpress: <a href="http://www.aliexpress.com/item/HOT-SALE-E-Direct-Current-0-5-V-White-Voltmeter-Analog-Panel-Meter/32521001902.html" class="uri">http://www.aliexpress.com/item/HOT-SALE-E-Direct-Current-0-5-V-White-Voltmeter-Analog-Panel-Meter/32521001902.html</a>. Unfortunately the product page is not available at this moment. Here is the screenshot of the page when I order it:</p>
+<hr />
+<div class="figure">
+<img src="5vMeterAliExpress.jpg" title="I bought two of these gauges from Aliexpress." alt="I bought two of these gauges from Aliexpress." />
+<p class="caption">I bought two of these gauges from Aliexpress.</p>
+</div>
+<hr />
+<p>As I said, there is no single gauge that is only suitable for aPCmeter project. You are free to select anything you want as long as it works as a 5V DC voltmeter panel.</p>
+<p>Meters arrived within a month.</p>
+<hr />
+<div class="figure">
+<img src="MetersAfterArrival.jpg" title="Analog meters after arrival" alt="Analog meters after arrival" />
+<p class="caption">Analog meters after arrival</p>
+</div>
+<hr />
+<p>Next, I designed custom labels. You can find necessary files under &quot;Gauge&quot; folder. Please read the &quot;Readme.md&quot; file. It is very easy to disassemble gauges.</p>
+<hr />
+<div class="figure">
+<img src="MetersDisassembled.jpg" title="Disassembled meters" alt="Disassembled meters" />
+<p class="caption">Disassembled meters</p>
+</div>
+<hr />
+<p>You don't need to open the back to modify label actually. As you can see, there is a current limiting resistor. Let's remove the front panel.</p>
+<hr />
+<div class="figure">
+<img src="MeterFrontPanelOff.jpg" title="Removed front panel" alt="Removed front panel" />
+<p class="caption">Removed front panel</p>
+</div>
+<hr />
+<p>You can use the front and just paste the custom label on it. I prefered to use the back of the panel. I flipped the panel and scratched surface little bit by sandpaper to provide better surface for glue.</p>
+<hr />
+<div class="figure">
+<img src="PanelScratched.jpg" title="Scratched panel" alt="Scratched panel" />
+<p class="caption">Scratched panel</p>
+</div>
+<hr />
+<p>I used standard A4 paper to print the label. An ordinary paper glue like Pritt is suitable. Let's apply glue.</p>
+<hr />
+<div class="figure">
+<img src="PanelGlueApplied.jpg" title="Glued panel" alt="Glued panel" />
+<p class="caption">Glued panel</p>
+</div>
+<hr />
+<p>Let's paste our custom label. Dimension of my panel is 60mm x 35mm.</p>
+<hr />
+<div class="figure">
+<img src="PanelAfterPaste.jpg" title="Panel after paste" alt="Panel after paste" />
+<p class="caption">Panel after paste</p>
+</div>
+<hr />
+<p>Let's flip the panel and remove the excess paper using knife or something like it.</p>
+<hr />
+<div class="figure">
+<img src="PanelFlipped.jpg" title="Flipped panel" alt="Flipped panel" />
+<p class="caption">Flipped panel</p>
+</div>
+<hr />
+<p>After cutting excess paper, it looks like this:</p>
+<hr />
+<div class="figure">
+<img src="PanelFinished.jpg" title="Finished panel" alt="Finished panel" />
+<p class="caption">Finished panel</p>
+</div>
+<hr />
+<p>As final step, let's reassemble the guage. Our RAM meter is ready to use now! You should repeat these steps to build CPU meter.</p>
+<hr />
+<div class="figure">
+<img src="RAMMeterFinished.jpg" title="RAM meter is ready." alt="RAM meter is ready." />
+<p class="caption">RAM meter is ready.</p>
+</div>
+<hr />
+<p>You can test meter by using the Arduino code itself or a seperate power supply. For example:</p>
+<hr />
+<div class="figure">
+<img src="RAMMeterWorking.gif" title="RAM meter is working." alt="RAM meter is working." />
+<p class="caption">RAM meter is working.</p>
+</div>
+<hr />
+<h2 id="arudino-based-circuit">Arudino based circuit</h2>
+<p>aPCmeter board consists of Arduino Nano 3.0 + some simple components. You should look at &quot;Board&quot; folder for details. As a reference, here is the my recommended circuit schematic:</p>
+<hr />
+<div class="figure">
+<img src="ArduinoSchematic.png" title="Schematic" alt="Schematic" />
+<p class="caption">Schematic</p>
+</div>
+<hr />
+<p>Although I built my aPCmeter using perfboard, I prepared an example layout for breadboard.</p>
+<hr />
+<div class="figure">
+<img src="BreadboardLayout.png" title="Breadboard layout" alt="Breadboard layout" />
+<p class="caption">Breadboard layout</p>
+</div>
+<hr />
+<p>The schematic is straightforward. First, I soldered the CPU part and both LEDs as shown in below. Dimension of my perfboard is 125mm x 60mm.</p>
+<hr />
+<div class="figure">
+<img src="BoardCPUsoldered.jpg" title="CPU part and LEDs are soldered." alt="CPU part and LEDs are soldered." />
+<p class="caption">CPU part and LEDs are soldered.</p>
+</div>
+<hr />
+<p>I checked the LEDs next. Notice that light is not diffused very well. This may be a problem when a gauge is illuminated by both red and green LED to obtain a yellow light. We will do something for diffusion later on.</p>
+<hr />
+<div class="figure">
+<img src="BoardLEDIsWorking.gif" title="One of the RGB LED is under test." alt="One of the RGB LED is under test." />
+<p class="caption">One of the RGB LED is under test.</p>
+</div>
+<hr />
+<p>Later I finished the remaining parts of the circuit. I glued (Pritt) piece of aluminium foil around LED and around the meter to improve light reflectivity and to avoid light interference between two gauges. I connected diodes accross terminal of gauges directly. I also prefered to use connectors for gauges.</p>
+<hr />
+<div class="figure">
+<img src="BoardAluminiumFoil.jpg" title="Board is almost complete." alt="Board is almost complete." />
+<p class="caption">Board is almost complete.</p>
+</div>
+<hr />
+<p>Board is almost complete but do you remember the light diffisuion issue? My plan was to illimunate gauges from bottom. Gauge should be illuminated uniformly. This is necessary to obtain secondary colors like yellow properly. I found transparent paper holders around my desk and decided to give a try. They were transparent but had rough surfaces which might provide enough diffusion. I placed couple of paper holders between LED and gauge. You can see the result here for a test pattern. It looks fine.</p>
+<hr />
+<div class="figure">
+<img src="BoardDiffusedLED.gif" title="Lighting after home made diffuser." alt="Lighting after home made diffuser." />
+<p class="caption">Lighting after home made diffuser.</p>
+</div>
+<hr />
+<p>I took a piece of cardboard and pasted a piece of aluminium foil on one side using a paper glue (Pritt). Then, I cutted into 4 pieces. I prepared one set for each meter.</p>
+<hr />
+<div class="figure">
+<img src="BoardCardboards.jpg" title="Cardboards" alt="Cardboards" />
+<p class="caption">Cardboards</p>
+</div>
+<hr />
+<p>I glued cardbords around LEDs to construct a support for meters using hot glue. Foil glued sides should face to LED. I cut small pieces from paper holders and strewed inside support. Finally I glued meters on top of support using hot glue. Here is an example picture. Notice the small pieces inside at the leftmost support. Can you notice a LED? :)</p>
+<hr />
+<div class="figure">
+<img src="BoardMeterSupport.jpg" title="Home made diffusers inside the meter support" alt="Home made diffusers inside the meter support" />
+<p class="caption">Home made diffusers inside the meter support</p>
+</div>
+<hr />
+<p>As I said before, I used piece of paper holder as light diffuser. Here is the standard paper holder that I used.</p>
+<hr />
+<div class="figure">
+<img src="DiffuserHomeMade.jpg" title="Paper holder used to make light diffuser" alt="Paper holder used to make light diffuser" />
+<p class="caption">Paper holder used to make light diffuser</p>
+</div>
+<hr />
+<p>Finally a test pattern works well.</p>
+<hr />
+<div class="figure">
+<img src="BoardFinalTest.gif" title="Final test" alt="Final test" />
+<p class="caption">Final test</p>
+</div>
+<hr />
+<h2 id="wood-case">Wood case</h2>
+<p>This is the most improvised part of the project. I just built a crude wooden box. You can find my cutting layout under &quot;Wood&quot; directory. Here is the quick reference.</p>
+<hr />
+<div class="figure">
+<img src="WoodCuttingLayout.png" title="Wood cutting layout" alt="Wood cutting layout" />
+<p class="caption">Wood cutting layout</p>
+</div>
+<hr />
+<p>I cutted 6 pieces of wood using the given sketch.</p>
+<hr />
+<div class="figure">
+<img src="WoodSixPieces.jpg" title="Very rough sides!" alt="Very rough sides!" />
+<p class="caption">Very rough sides!</p>
+</div>
+<hr />
+<p>I chose to build the box in a modular fashion. Instead of glue, I preferred using bracktes and screws to build the box. I drilled holes and screwed brackets.</p>
+<hr />
+<div class="figure">
+<img src="WoodBottomBracket.jpg" title="Screw and bracket" alt="Screw and bracket" />
+<p class="caption">Screw and bracket</p>
+</div>
+<hr />
+<hr />
+<div class="figure">
+<img src="WoodBottomBracket2.jpg" title="Another view of screw and bracket" alt="Another view of screw and bracket" />
+<p class="caption">Another view of screw and bracket</p>
+</div>
+<hr />
+<p>Then I finished all bracktes of the bottom side.</p>
+<hr />
+<div class="figure">
+<img src="WoodBottomAllBrackets.jpg" title="Brackets of the bottom side" alt="Brackets of the bottom side" />
+<p class="caption">Brackets of the bottom side</p>
+</div>
+<hr />
+<p>After drilling all holes necessary for brackets at the bottom, I mounted the board using three screws.</p>
+<hr />
+<div class="figure">
+<img src="WoodBottomWithBoard.jpg" title="Mounted board" alt="Mounted board" />
+<p class="caption">Mounted board</p>
+</div>
+<hr />
+<p>I added paper holder between perfboard and screws as an insulation layer to protect circuit from deadshorts.</p>
+<div class="figure">
+<img src="BoardPaperHolderInsulated.jpg" title="Insulated Board" alt="Mounted board" />
+<p class="caption">Mounted board</p>
+</div>
+<hr />
+<p>Then, I completed the remaning sides in a similar way. Now, it is ready to close the box.</p>
+<div class="figure">
+<img src="Case5SidesOK.jpg" title="5 sides are completed." alt="5 sides are completed." />
+<p class="caption">5 sides are completed.</p>
+</div>
+<hr />
+<p>Notice that I am using nuts and bolts (trademark warning!) to attach panels together with help of brackets. I held a nut with my hand and tightened bolt with my otherhand. However once I closed the box completely, I couldn't hold nut. Therefore I applied hot glue to nuts (There are 6 of them.) corresponding to screws at the bottom. By this way I was able to tighten the bottom screws without any problem. Once I open the box from using the bottom screws, again I can my other hand to hold other nuts. There is no need to glue for them but it is up to you. Here is the example:</p>
+<div class="figure">
+<img src="CaseGluedNuts.jpg" title="Glued Nuts" alt="Glued Nuts" />
+<p class="caption">Glued Nuts</p>
+</div>
+<hr />
+<p>As the last step, you should open necessary openings for USB cable and gauges to be able to see them. First, I opened the back panel and simply use pencil to draw skleleton for cuts. I repeated similar steps for USB cable at the back. Here is the final result:</p>
+<div class="figure">
+<img src="CaseFrontCuts.jpg" title="Front Cuts" alt="Front Cuts" />
+<p class="caption">Front Cuts</p>
+</div>
+<div class="figure">
+<img src="CaseBackCut.jpg" title="Back Cut" alt="Back Cut" />
+<p class="caption">Back Cut</p>
+</div>
+<hr />
+<div class="figure">
+<img src="aPCmeterWorking1.jpg" title="Completed aPCmeter" alt="Completed aPCmeter" />
+<p class="caption">Completed aPCmeter</p>
+</div>
+<hr />
+<h2 id="software">Software</h2>
+<p>You should upload the Arduino software to your board if you haven't done it yet. Software is located in &quot;Firmware&quot; folder.</p>
+<p>aPCmeter needs also host software running on PC in addition to Arduino software. PC software should monitor CPU and RAM usages, calcute PWM values for gauges and LEDs and communicate with Arduino software over serial channel. This project is for the device (aPCmeter) only. No PC software is located in this project files. If you wish, you can write your own PC software. Currently I am using an experimental and simple software to use it. However, it is far from complete and to publish. I am planning to publish a PC software too. Please check aPCmeter project page <a href="http://www.alperyazar.com/r/aPCmeter" class="uri">http://www.alperyazar.com/r/aPCmeter</a> or <a href="http://www.alperyazar.com/outputs.html" class="uri">http://www.alperyazar.com/outputs.html</a>. Most probably I will also edit this section to link PC software that I published but I may also forget. So if you are looking for ready-to-use PC software (You should definitely have one to be able to use aPCmeter.) please check the given links.</p>
+<hr />
+<h1 id="further-questions-and-comments">Further Questions and Comments</h1>
+<p>If you have questions and comments about this project, please feel free to contact me.</p>
+<p><a href="http://www.alperyazar.com/contact.html" class="uri">http://www.alperyazar.com/contact.html</a></p>
+<p><em>Last Updated: 01 Oct 2016</em></p>
+</body>
+</html>

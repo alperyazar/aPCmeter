@@ -1,0 +1,1 @@
+pandoc -s --toc howtobuild.md -o howtobuild.html
