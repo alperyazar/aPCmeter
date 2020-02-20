@@ -1,5 +1,7 @@
 # aPCmeter
 
+![aPCmeter Working](BoardFinalTest.gif)
+
 ![aPCmeter Flyer](aPCmeter_flyer_LoQ.jpg)
 
 aPCmeter is an open source, Arduino Nano based, illuminated vintage looking CPU and RAM gauges box project. It is designed only just for fun. It shows CPU and RAM utilization of PC in analog manner.
