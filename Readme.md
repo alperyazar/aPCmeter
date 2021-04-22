@@ -10,7 +10,7 @@ This repository is dedicated to aPCmeter device including drawings of wood case,
 
 You can find all details on the project web page:
 
-[https://www.alperyazar.com/project/apcmeter/](https://www.alperyazar.com/project/apcmeter/)
+[https://www.ayazar.com/projects/apcmeter.html](https://www.ayazar.com/projects/apcmeter.html)
 
 **THIS PROJECT IS PUBLISHED UNDER CC BY-NC-SA 4.0 LICENSE**
 
