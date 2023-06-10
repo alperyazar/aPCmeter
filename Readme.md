@@ -10,7 +10,7 @@ aPCmeter is an open source, Arduino Nano based, illuminated vintage looking CPU 
 
 ## v2, 2023
 
-7 years after the first design (v1, 2016), my friend [Erdal](https://www.linkedin.com/in/erdal-mehmetcik-7470363a/) who is a 3D printer enthusiast designed and printed an ABS box for me and I did a *retrofit*.
+7 years after the first design (v1, 2016), my friend [Erdal](https://www.linkedin.com/in/erdal-mehmetcik-7470363a/) who is a 3D printer enthusiast designed and printed an ABS box for me (with [Bambu X1c](https://bambulab.com/en/x1)) and I did a *retrofit*.
 
 ![v2 front](v2-front.jpg)
 
